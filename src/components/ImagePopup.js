@@ -1,6 +1,6 @@
 import React from "react";
 
-function PopupFullscreen(props) {
+function ImagePopup(props) {
 
 return(
 
@@ -17,4 +17,4 @@ return(
 
 }
 
-export default PopupFullscreen;
+export default ImagePopup;

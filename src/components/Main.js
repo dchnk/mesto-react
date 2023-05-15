@@ -1,6 +1,6 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import PopupFullscreen from "./ImagePopup";
+import ImagePopup from "./ImagePopup";
 import api  from "../utils/Api";
 import Card  from "./Card";
 
@@ -67,7 +67,7 @@ function Main (props) {
             <input className="popup__input popup__input_type_link" type="url" defaultValue="" placeholder="Ссылка на картинку" name="link" id="popup-input-link-avatar" required/>
             <span className="popup__input-error popup-input-link-avatar-error">Ошибка</span>
         </PopupWithForm>
-        <PopupFullscreen onClose ={props.onClose} card = {props.selectedCard}/>
+        <ImagePopup onClose ={props.onClose} card = {props.selectedCard}/>
     </main>
   )
   
