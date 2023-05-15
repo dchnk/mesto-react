@@ -1,6 +1,6 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import PopupFullscreen from "./PopupFullscreen";
+import PopupFullscreen from "./ImagePopup";
 import api  from "../utils/Api";
 import Card  from "./Card";
 
