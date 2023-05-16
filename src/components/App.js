@@ -79,7 +79,7 @@ return(
             <input className="popup__input popup__input_type_link" type="url" defaultValue="" placeholder="Ссылка на картинку" name="link" id="popup-input-link-avatar" required/>
             <span className="popup__input-error popup-input-link-avatar-error">Ошибка</span>
         </PopupWithForm>
-        <ImagePopup onClose ={closeAllPopups} card = {selectedCard}/>
+        <ImagePopup onClose ={closeAllPopups} card = {selectedCard} />
         <Footer />
     </div>
 </div>

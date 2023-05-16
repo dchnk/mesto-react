@@ -2,7 +2,11 @@ import React from "react";
 
 function ImagePopup(props) {
 
+
+
 return(
+
+
 
 <div className={props.card.name ? ("popup popup_type_fullscreen popup_opened") : ("popup popup_type_fullscreen")}>
   <div className="popup__container popup__container_type_fullscreen">
