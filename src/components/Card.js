@@ -2,9 +2,13 @@ import React from "react";
 
 function Card(props) {
 
+function onClick() {
+  props.onCardClick(props.card)
+}
+
 return(
 
-<article className="element" onClick={asd}>
+<article className="element" onClick={onClick}>
   <div className="element__photo" style={{
     backgroundImage: `url(${props.card.link})`,
     backgroundSize: `cover`,
@@ -22,11 +26,6 @@ return(
 </article>
 
 )
-
-function asd() {
-  props.onCard(props.card)
-}
-
 }
 
 export default Card;
