@@ -47,9 +47,11 @@ class Api {
         })
     }
 
-    switchLikeStatusRequest = (method, item) => {
-        return fetch(`${this._baseUrl}/cards/${item._id}/likes`, {
-        method: method,
+    switchLikeStatusRequest = (item, isLiked) => {
+        this._method = isLiked ? 'DELETE' : 'PUT';
+        
+        return fetch(`${this._baseUrl}/cards/${item}/likes`, {
+        method: this._method,
         headers: this._headers
         })
         .then(res => {
@@ -62,7 +64,7 @@ class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: `${item.link}`
+                avatar: item.avatar
             })
         })
         .then(res => {
