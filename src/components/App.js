@@ -79,30 +79,36 @@ function App() {
     }
 
     function handleUpdateUser(profileInfo) {
+        setIsLoading(true);
         api.editUserInfoRequet(profileInfo)
             .then((userData) => {
                 setCurrentUser(userData);
                 closeAllPopups();
             })
-            .catch(err => showError(err));
+            .catch(err => showError(err))
+            .finally(() => setIsLoading(false));
     }
 
     function handleUpdateAvatar(profileInfo) {
+        setIsLoading(true);
         api.updateProfileInfoRequest(profileInfo)
             .then((userData) => {
                 setCurrentUser(userData);
                 closeAllPopups();
             })
-            .catch(err => showError(err));
+            .catch(err => showError(err))
+            .finally(() => setIsLoading(false));
     }
 
     function handleAddNewCard(cardInfo) {
+        setIsLoading(true);
         api.postNewCardRequest(cardInfo)
             .then((newCard) => {
                 setCards([newCard, ...cards]);
                 closeAllPopups();
             })
-            .catch(err => showError(err));
+            .catch(err => showError(err))
+            .finally(() => setIsLoading(false));
     }
 
     function handleEditProfileClick() {
@@ -138,11 +144,13 @@ function App() {
                         isOpen={isEditProfilePopupOpen}
                         onClose={closeAllPopups}
                         onUpdateUser={handleUpdateUser}
+                        isLoading={isLoading}
                     />
                     <AddPlacePopup
                         isOpen={isAddPlacePopupOpen}
                         onClose={closeAllPopups}
                         onAddCard={handleAddNewCard}
+                        isLoading={isLoading}
                     />
                     <PopupWithForm
                         name='delete'
@@ -153,6 +161,7 @@ function App() {
                         isOpen={isEditAvatarPopupOpen}
                         onClose={closeAllPopups}
                         onUpdateAvatar={handleUpdateAvatar}
+                        isLoading={isLoading}
                     />
                     <ImagePopup onClose={closeAllPopups} card={selectedCard} />
                     <Footer />

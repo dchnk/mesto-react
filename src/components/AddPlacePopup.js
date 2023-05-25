@@ -1,42 +1,45 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { usePopupClose } from "./hooks/usePopupClose";
 
 function AddPlacePopup(props) {
 
-const [link, setLink] = React.useState('');
-const [name, setName] = React.useState('');
+    usePopupClose(props.isOpen, props.onClose)
 
-React.useEffect(() => {
-    setLink('');
-    setName('');
-}, [props.isOpen])
+    const [link, setLink] = React.useState('');
+    const [name, setName] = React.useState('');
+
+    React.useEffect(() => {
+        setLink('');
+        setName('');
+    }, [props.isOpen])
 
 
-function handleChangeName(e) {    
-    setName(e.target.value)
-}
+    function handleChangeName(e) {
+        setName(e.target.value)
+    }
 
-function handleChangeLink(e) {    
-    setLink(e.target.value)
-}
+    function handleChangeLink(e) {
+        setLink(e.target.value)
+    }
 
-function handleSubmit(e) {
-    e.preventDefault();
+    function handleSubmit(e) {
+        e.preventDefault();
 
-    props.onAddCard({
-      link,
-      name
-    });
-}
+        props.onAddCard({
+            link,
+            name
+        });
+    }
 
-return(
-    <PopupWithForm
+    return (
+        <PopupWithForm
             name='card'
             title='Новое место'
-            buttonText='Создать'
+            buttonText={props.isLoading ? 'Создание...' : 'Создать'}
             isOpen={props.isOpen}
-            onClose = {props.onClose}
-            onSubmit = {handleSubmit}
+            onClose={props.onClose}
+            onSubmit={handleSubmit}
         >
             <input
                 className="popup__input popup__input_type_photo-name"
@@ -62,8 +65,8 @@ return(
                 required
             />
             <span className="popup__input-error popup-input-link-error">Вы пропустили это поле.</span>
-    </PopupWithForm>
-)
+        </PopupWithForm>
+    )
 
 
 }
