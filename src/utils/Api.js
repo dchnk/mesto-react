@@ -15,7 +15,7 @@ class Api {
         if (res.ok) {
             return res.json();
         }
-    
+
         return Promise.reject(`Ошибка: ${res.status}`);
     }
 
@@ -24,39 +24,40 @@ class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then(res => {
-            return this._checkRequestResult(res);
-        })
-    ;}
+            .then(res => {
+                return this._checkRequestResult(res);
+            })
+            ;
+    }
 
     takeProfileInfoRequest = () => {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers
         })
-        .then(res => {
-            return this._checkRequestResult(res);            
-        })
+            .then(res => {
+                return this._checkRequestResult(res);
+            })
     }
 
     takeCardsRequset = () => {
         return fetch(`${this._baseUrl}/cards`, {
             headers: this._headers
         })
-        .then(res => {
-            return this._checkRequestResult(res);            
-        })
+            .then(res => {
+                return this._checkRequestResult(res);
+            })
     }
 
     switchLikeStatusRequest = (item, isLiked) => {
         this._method = isLiked ? 'DELETE' : 'PUT';
-        
+
         return fetch(`${this._baseUrl}/cards/${item}/likes`, {
-        method: this._method,
-        headers: this._headers
+            method: this._method,
+            headers: this._headers
         })
-        .then(res => {
-            return this._checkRequestResult(res);
-        })
+            .then(res => {
+                return this._checkRequestResult(res);
+            })
     }
 
     updateProfileInfoRequest = (item) => {
@@ -67,9 +68,9 @@ class Api {
                 avatar: item.avatar
             })
         })
-        .then(res => {
-            return this._checkRequestResult(res);
-        })             
+            .then(res => {
+                return this._checkRequestResult(res);
+            })
     }
 
     postNewCardRequest = (item) => {
@@ -81,13 +82,13 @@ class Api {
                 link: `${item.link}`
             })
         })
-        .then(res => {
-            return this._checkRequestResult(res);
-        })
+            .then(res => {
+                return this._checkRequestResult(res);
+            })
     }
 
     editUserInfoRequet = (item) => {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-63/users/me', {
+        return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
@@ -95,9 +96,9 @@ class Api {
                 about: `${item.about}`
             })
         })
-        .then(res => {
-            return this._checkRequestResult(res);
-        })
+            .then(res => {
+                return this._checkRequestResult(res);
+            })
     }
 }
 
